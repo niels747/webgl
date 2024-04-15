@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html style="background-color: rgb(41, 41, 41);">
+	<head>
+		<title>Fluid Simulation</title>
+		<script src="app.js"></script>
+	</head>
+	<body style="color: white; padding: 10px; font-size: 25px;">
+		<h1>WebGL 2.0 Fluid Convection Simulation</h1>
+		<p>
+			I added a nice system to view the simulation and some simple user input. The simulation itself hasn't changed much.
+		</p>
+
+		<form id="startBtn" oninput="simResShowX.value=parseInt(simResSelX.value); simResShowY.value=parseInt(simResSelY.value)">
+			<h1>Choose a resolution. The higher the resolution, the slower it will run!</h1>
+			<table>
+				<tr>
+					<td>
+						<b>Horizontal resolution</b>
+					</td>
+					<td>
+						<input type="range" min="100" max="2000" value="100" id="simResSelX" name="fname" />
+						<output name="simResShowX">100</output>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<b>Vertical resolution</b>
+					</td>
+					<td>
+						<input type="range" min="100" max="2000" value="100" id="simResSelY" />
+						<output name="simResShowY">100</output>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<input type="button" value="Start" onclick="mainScript()" />
+					</td>
+				</tr>
+			</table>
+		</form>
+
+		<div hidden="true" id="help" style="margin: 15px;">
+			<h3>Controls</h3>
+			<li>Middle mouse button to drag the simulation window arround.</li>
+			<li>Mouse wheel to zoom in and out (if you don't have a middle mouse button you can also use this to change the position of the simulation window.</li>
+			<li>Left mouse button to add heat. Hold down ctrl (command on mac) to remove heat.</li>
+			<li>Unfortunately touchscreen input is not supported yet.</li>
+			<li>Click the fullscreen button!</li>
+			<img src="fullscreen_icon.png" onclick="setFullscreen()" style="float: left;" />
+		</div>
+
+		<canvas id="canvas">
+			Your browser does not support HTML5, you must be using a really old browser!
+		</canvas>
+		<br />
+		<i>By Niels Daemen</i>
+	</body>
+</html>

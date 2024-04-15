@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html style="background-color: rgb(41, 41, 41)">
+	<head>
+		<meta charset="utf-8" />
+		<title>Fluid Simulation</title>
+		<script type="text/javascript" src="libraries/dat.gui.min.js"></script>
+		<script src="app.js"></script>
+		<style>
+			canvas {
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+		</style>
+	</head>
+	<body id="body" style="padding: 0px; margin: 0px">
+		<div id="IntroScreen" style="color: white; padding: 10px; font-size: 25px">
+			<h1>WebGL 2d Atmospheric Simulation</h1>
+
+			<form id="startBtn" oninput="simResShowX.value=parseInt(simResSelX.value); simResShowY.value=parseInt(simResSelY.value)">
+				<h1>Choose a resolution. The higher the resolution, the slower it will run!</h1>
+				<table>
+					<tr>
+						<td>
+							<b>Horizontal resolution</b>
+						</td>
+						<td>
+							<input type="range" min="100" max="3000" value="2000" step="2" id="simResSelX" />
+							<output name="simResShowX">2000</output>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<b>Vertical resolution</b>
+						</td>
+						<td>
+							<input type="range" min="100" max="300" value="300" step="2" id="simResSelY" />
+							<output name="simResShowY">300</output>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="fileInput">Or load a save:</label>
+							<input type="file" id="fileInput" name="fileInput" accept=".weathersim,.fluidsim" />
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<input type="button" value="Start" onclick="loadData()" />
+						</td>
+					</tr>
+				</table>
+			</form>
+
+			<p><a style="color: white" href="Example_save.weathersim">Download example save file</a></p>
+
+			<div id="help" style="margin: 15px">
+				<h2>Controls</h2>
+				<h3>Mouse</h3>
+				<li>Middle mouse button to drag the simulation area arround.</li>
+				<li>Mouse wheel to zoom in and out (if you don't have a middle mouse button you can also use this to change the position of the simulation window.</li>
+				<li>Left mouse button to add heat or build wall. Hold down Ctrl (command on mac) to do the opposite.</li>
+				<li>Touchscreen input is not supported yet.</li>
+				<h3>Keys</h3>
+				<table>
+					<tr>
+						<td>Number keys</td>
+						<td>Display modes</td>
+					</tr>
+					<tr>
+						<td>Space &nbsp;&nbsp;&nbsp;&nbsp;</td>
+						<td>Pause / resume</td>
+					</tr>
+					<tr>
+						<td>G</td>
+						<td>Show / hide sounding graph</td>
+					</tr>
+					<tr>
+						<td>H</td>
+						<td>Show / hide GUI</td>
+					</tr>
+				</table>
+				<br />
+				<i>By Niels Daemen</i>
+			</div>
+		</div>
+		<canvas id="graphCanvas" style="z-index: -1"></canvas>
+		<canvas id="mainCanvas" style="position: fixed; user-select: none; -webkit-user-select: none; -moz-user-select: none; z-index: -2"> Your browser does not support HTML5, you must be using a really old browser! </canvas>
+	</body>
+</html>
